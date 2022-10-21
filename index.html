@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="./styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <script src="./script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+    <script src="./script.js" defer></script>
 </head>
 
 <body>
@@ -18,39 +18,39 @@
     <h1>Simple Calculator</h1>
     <section>
         <div class="flex-row">
-            <div class="flex-size-1 display">
-                <p class="display-1">0</p>
-                <p class="display-2">0</p>
+            <div class="flex-size-1 flex-column display">
+                <p id="display-1"></p>
+                <p id="display-2"></p>
             </div>
         </div>
         <div class="flex-row">
-            <button class="flex-size-1 orangeBtn">C</button>
-            <button class="flex-size-1 orangeBtn">«</button>
-            <button class="flex-size-1 greenBtn">X<sup>Y</sup></button>
-            <button class="flex-size-1 greenBtn">÷</button>
+            <button class="flex-size-1 orangeBtn" id="clearBtn">C</button>
+            <button class="flex-size-1 orangeBtn" id="backspaceBtn">«</button>
+            <button class="flex-size-1 greenBtn" id="exponentiateBtn">X<sup>Y</sup></button>
+            <button class="flex-size-1 greenBtn" id="divideBtn">÷</button>
         </div>
         <div class="flex-row">
-            <button class="flex-size-1 blueBtn">1</button>
-            <button class="flex-size-1 blueBtn">2</button>
-            <button class="flex-size-1 blueBtn">3</button>
-            <button class="flex-size-1 greenBtn">x</button>
+            <button class="flex-size-1 blueBtn" id="btn1">1</button>
+            <button class="flex-size-1 blueBtn" id="btn2">2</button>
+            <button class="flex-size-1 blueBtn" id="btn3">3</button>
+            <button class="flex-size-1 greenBtn" id="multiplyBtn">x</button>
         </div>
         <div class="flex-row">
-            <button class="flex-size-1 blueBtn">4</button>
-            <button class="flex-size-1 blueBtn">5</button>
-            <button class="flex-size-1 blueBtn">6</button>
-            <button class="flex-size-1 greenBtn">-</button>
+            <button class="flex-size-1 blueBtn" id="btn4">4</button>
+            <button class="flex-size-1 blueBtn" id="btn5">5</button>
+            <button class="flex-size-1 blueBtn" id="btn6">6</button>
+            <button class="flex-size-1 greenBtn" id="subtractBtn">-</button>
         </div>
         <div class="flex-row">
-            <button class="flex-size-1 blueBtn">7</button>
-            <button class="flex-size-1 blueBtn">8</button>
-            <button class="flex-size-1 blueBtn">9</button>
-            <button class="flex-size-1 greenBtn">+</button>
+            <button class="flex-size-1 blueBtn" id="btn7">7</button>
+            <button class="flex-size-1 blueBtn" id="btn8">8</button>
+            <button class="flex-size-1 blueBtn" id="btn9">9</button>
+            <button class="flex-size-1 greenBtn" id="addBtn">+</button>
         </div>
         <div class="flex-row">
-            <button class="flex-size-1 blueBtn">.</button>
-            <button class="flex-size-1 blueBtn">0</button>
-            <button class="flex-size-2 orangeBtn">=</button>
+            <button class="flex-size-1 blueBtn" id="dotBtn">.</button>
+            <button class="flex-size-1 blueBtn" id="btn0">0</button>
+            <button class="flex-size-2 orangeBtn" id="equalsBtn">=</button>
         </div>
     </section>
 

@@ -3,8 +3,13 @@ h1, p, button, footer {
     font-weight: 400;
 }
 
+h1 {
+    font-size: 40px;
+}
+
 h1, footer {
-    text-align: center; 
+    text-align: center;
+    margin: 40px 0;
 }
 
 section {
@@ -12,10 +17,7 @@ section {
     margin: 0 auto;
     padding: 30px;
     border-radius: 20px;
-}
-
-h1, footer {
-    margin: 40px 0;
+    background-color: rgb(0, 96, 120);
 }
 
 /* Flexbox */
@@ -26,6 +28,14 @@ h1, footer {
     margin-bottom: 10px;
     min-height: 60px;
     align-items: stretch;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    min-height: 80px;
+    justify-content: space-between;
 }
 
 .flex-size-1 {
@@ -57,18 +67,12 @@ button:active {
 
 /* Colours */
 
-body {
-    background-color: rgb(240, 240, 240);
-}
-
-section {
-    background-color: rgb(0, 96, 120);
+body, .display {
+    background-color: rgb(245, 255, 255);
 }
 
 .display {
-    background-color: rgb(245, 255, 255);
     border-color: rgb(0, 195, 221);
-    margin-bottom: 20px;
 }
 
 .blueBtn, .blueBtn:active {
@@ -84,4 +88,8 @@ section {
 .orangeBtn, .orangeBtn:active {
     background-color: rgb(255, 239, 200);
     border-color: rgb(241, 173, 0);
+}
+
+#dotBtn:disabled, .greenBtn:disabled {
+    background-color: rgb(245, 255, 255);
 }
