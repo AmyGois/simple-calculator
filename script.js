@@ -1,4 +1,4 @@
-/* Buttons and display paragraphs */
+/* V1 - Buttons and display paragraphs */
 
 const display1 = document.querySelector('#display-1');
 const display2 = document.querySelector('#display-2');
@@ -30,13 +30,12 @@ const dotBtn = document.querySelector('#dotBtn');
 const equalsBtn = document.querySelector('#equalsBtn');
 
 
-/* Other variables */
+/* V2 - Other variables */
 
 let firstNum = 0;
 let secondNum = 0;
 let operation = '';
-let numbersArray = [];
-
+let total = '';
 
 /* F1 - Maths functions */
 
@@ -92,14 +91,7 @@ function operate(operation, firstNum, secondNum) {
 };
 
 
-/* Add a number to numbers array (to send to the operations functions) */
-
-function sendToNumbersArray() {
-    numbersArray.push(display2.textContent);
-}
-
-
-/* Add numbers to the operation */
+/* F3 - Add numbers to the operation */
 
 function appendNumber(num) {
     if(display2.textContent === '+' || display2.textContent === '-' || display2.textContent === '÷' || display2.textContent === 'x' || display2.textContent === '^') {
@@ -158,10 +150,14 @@ btn9.addEventListener('click', () => appendNumber(9));
 dotBtn.addEventListener('click', () => appendNumber('.'));
 
 
-/* Add an operator to the operation */
+/* F4 - Add an operator to the operation */
 
 function appendOperator(operator) {
-    sendToNumbersArray();
+    if(total !== '') {
+        display1.textContent = '';
+    }
+
+    firstNum = Number(display2.textContent);
     display1.textContent += display2.textContent;
 
     switch(operator) {
@@ -200,6 +196,35 @@ multiplyBtn.addEventListener('click', () => appendOperator('x'));
 divideBtn.addEventListener('click', () => appendOperator('÷'));
 exponentiateBtn.addEventListener('click', () => appendOperator('^'));
 
+
+/* F5 - Complete the operation when = button is clicked */
+
+function completeOperation() {
+    secondNum = Number(display2.textContent);
+
+    display1.textContent += display2.textContent + '=';
+
+    total = operate(operation, firstNum, secondNum);
+    display2.textContent = total;
+
+    operatorBtns.forEach((button) => button.disabled = false);
+
+    if(display2.textContent.includes('.')) { // Use for backspace button?
+        dotBtn.disabled = true;
+    } else {
+        dotBtn.disabled = false;
+    }
+}
+
+equalsBtn.addEventListener('click', completeOperation);
+
+
+/* Delete last number or operator  when « button is clicked */
+
+
+/* Clear everything when C button is clicked */
+
+//Remember to sort out divide by 0 message
 
 /* Keyboard functionalities */
 
