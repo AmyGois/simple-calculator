@@ -29,12 +29,14 @@ const dotBtn = document.querySelector('#dotBtn');
 
 const equalsBtn = document.querySelector('#equalsBtn');
 
+
 /* Other variables */
 
 let firstNum = 0;
 let secondNum = 0;
 let operation = '';
 let numbersArray = [];
+
 
 /* F1 - Maths functions */
 
@@ -60,6 +62,7 @@ function divideNums(firstNum, secondNum) {
 function exponentiateNums(firstNum, secondNum) {
     return firstNum ** secondNum;
 };
+
 
 /* F2 - Perform selected operation on selected numbers */
 
@@ -88,11 +91,13 @@ function operate(operation, firstNum, secondNum) {
     };
 };
 
+
 /* Add a number to numbers array (to send to the operations functions) */
 
 function sendToNumbersArray() {
     numbersArray.push(display2.textContent);
 }
+
 
 /* Add numbers to the operation */
 
@@ -140,7 +145,6 @@ function appendNumber(num) {
     };
 };
 
-
 btn0.addEventListener('click', () => appendNumber(0));
 btn1.addEventListener('click', () => appendNumber(1));
 btn2.addEventListener('click', () => appendNumber(2));
@@ -152,6 +156,7 @@ btn7.addEventListener('click', () => appendNumber(7));
 btn8.addEventListener('click', () => appendNumber(8));
 btn9.addEventListener('click', () => appendNumber(9));
 dotBtn.addEventListener('click', () => appendNumber('.'));
+
 
 /* Add an operator to the operation */
 
@@ -194,3 +199,44 @@ subtractBtn.addEventListener('click', () => appendOperator('-'));
 multiplyBtn.addEventListener('click', () => appendOperator('x'));
 divideBtn.addEventListener('click', () => appendOperator('÷'));
 exponentiateBtn.addEventListener('click', () => appendOperator('^'));
+
+
+/* Keyboard functionalities */
+
+function useKeyAsButton(e) {   
+
+    switch(e.keyCode) {
+        case 48:
+            appendNumber(0);
+            break;
+        case 49:
+            appendNumber(1);
+            break;
+        case 50:
+            appendNumber(2);
+            break;
+        case 51:
+            appendNumber(3);
+            break;
+        case 52:
+            appendNumber(4);
+            break;
+        case 53:
+            appendNumber(5);
+            break;
+        case 54:
+            appendNumber(6);
+            break;
+        case 55:
+            appendNumber(7);
+            break;
+        case 56:
+            appendNumber(8);
+            break;
+        case 57:
+            appendNumber(9);
+            break;
+    }
+}
+
+document.addEventListener('keydown', useKeyAsButton);
