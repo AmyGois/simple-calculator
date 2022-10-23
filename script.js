@@ -209,18 +209,21 @@ exponentiateBtn.addEventListener('click', () => appendOperator('^'));
 /* F5 - Complete the operation when = button is clicked */
 
 function completeOperation() {
-    secondNum = Number(display2.textContent);
+    if(!display1.textContent.includes('=')) {
+        secondNum = Number(display2.textContent);
 
-    display1.textContent += display2.textContent + '=';
+        display1.textContent += display2.textContent + '=';
 
-    total = operate(operation, firstNum, secondNum);
-    display2.textContent = total;
+        total = operate(operation, firstNum, secondNum);
+        display2.textContent = total;
 
-    if(display2.textContent.includes('.')) { // Use for backspace button?
-        dotBtn.disabled = true;
-    } else {
-        dotBtn.disabled = false;
+        if(display2.textContent.includes('.')) { // Use for backspace button?
+            dotBtn.disabled = true;
+        } else {
+            dotBtn.disabled = false;
+        }
     }
+
 }
 
 equalsBtn.addEventListener('click', completeOperation);
@@ -233,8 +236,6 @@ equalsBtn.addEventListener('click', completeOperation);
 
 //Remember to sort out divide by 0 message
 //Sort out operations with just one number
-//Sort out multiple pressing of =
-// Establish maximum number of digits
 
 /* Keyboard functionalities */
 
