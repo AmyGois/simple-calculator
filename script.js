@@ -99,42 +99,48 @@ function appendNumber(num) {
         display2.textContent = '';
     }
 
-    switch (num) {
-        case 0:
-            display2.textContent += '0';
-            break;
-        case 1:
-            display2.textContent += '1';
-            break;
-        case 2:
-            display2.textContent += '2';
-            break;
-        case 3:
-            display2.textContent += '3';
-            break;
-        case 4:
-            display2.textContent += '4';
-            break;
-        case 5:
-            display2.textContent += '5';
-            break;
-        case 6:
-            display2.textContent += '6';
-            break;
-        case 7:
-            display2.textContent += '7';
-            break;
-        case 8:
-            display2.textContent += '8';
-            break;
-        case 9:
-            display2.textContent += '9';
-            break;
-        case '.':
-            display2.textContent += '.';
-            dotBtn.disabled = true;
-            break;
-    };
+    if(display2.textContent.length >= 10) {
+        display2.textContent += '';
+    } else {
+        switch (num) {
+            case 0:
+                display2.textContent += '0';
+                break;
+            case 1:
+                display2.textContent += '1';
+                break;
+            case 2:
+                display2.textContent += '2';
+                break;
+            case 3:
+                display2.textContent += '3';
+                break;
+            case 4:
+                display2.textContent += '4';
+                break;
+            case 5:
+                display2.textContent += '5';
+                break;
+            case 6:
+                display2.textContent += '6';
+                break;
+            case 7:
+                display2.textContent += '7';
+                break;
+            case 8:
+                display2.textContent += '8';
+                break;
+            case 9:
+                display2.textContent += '9';
+                break;
+            case '.':
+                display2.textContent += '.';
+                dotBtn.disabled = true;
+                break;
+        };
+    }
+
+    
 };
 
 btn0.addEventListener('click', () => appendNumber(0));
@@ -155,10 +161,15 @@ dotBtn.addEventListener('click', () => appendNumber('.'));
 function appendOperator(operator) {
     if(total !== '') {
         display1.textContent = '';
+        total = '';
     }
 
-    firstNum = Number(display2.textContent);
-    display1.textContent += display2.textContent;
+    if(display2.textContent === '+' || display2.textContent === '-' || display2.textContent === '÷' || display2.textContent === 'x' || display2.textContent === '^') {
+        display2.textContent = '';
+    } else {
+        firstNum = Number(display2.textContent);
+        display1.textContent += display2.textContent;
+    }
 
     switch(operator) {
         case '+':
@@ -183,8 +194,6 @@ function appendOperator(operator) {
             break;
     }
 
-    operatorBtns.forEach((button) => button.disabled = true);
-
     if(dotBtn.disabled) {
         dotBtn.disabled = false;
     }
@@ -207,8 +216,6 @@ function completeOperation() {
     total = operate(operation, firstNum, secondNum);
     display2.textContent = total;
 
-    operatorBtns.forEach((button) => button.disabled = false);
-
     if(display2.textContent.includes('.')) { // Use for backspace button?
         dotBtn.disabled = true;
     } else {
@@ -225,6 +232,9 @@ equalsBtn.addEventListener('click', completeOperation);
 /* Clear everything when C button is clicked */
 
 //Remember to sort out divide by 0 message
+//Sort out operations with just one number
+//Sort out multiple pressing of =
+// Establish maximum number of digits
 
 /* Keyboard functionalities */
 
