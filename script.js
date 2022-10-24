@@ -166,7 +166,7 @@ function appendOperator(operator) {
 
     if(display2.textContent === '+' || display2.textContent === '-' || display2.textContent === '÷' || display2.textContent === 'x' || display2.textContent === '^') {
         display2.textContent = '';
-    } else if(display2.textContent === 'NOPE! Can\'t divide by 0' || display2.textContent === 'NaN') {
+    } else if(display2.textContent === 'NOPE! Can\'t divide by 0' || display2.textContent === 'NaN' || display2.textContent === '') {
         firstNum = 0;
         display1.textContent += firstNum;
     } else {
@@ -213,9 +213,13 @@ exponentiateBtn.addEventListener('click', () => appendOperator('^'));
 
 function completeOperation() {
     if(!display1.textContent.includes('=')) {
-        secondNum = Number(display2.textContent);
-
-        display1.textContent += display2.textContent + '=';
+        if(display2.textContent === '+' || display2.textContent === '-' || display2.textContent === '÷' || display2.textContent === 'x' || display2.textContent === '^') {
+            secondNum = 0;
+            display1.textContent += display2.textContent + 0 + '=';
+        } else {
+            secondNum = Number(display2.textContent);
+            display1.textContent += display2.textContent + '=';
+        }
 
         total = operate(operation, firstNum, secondNum);
 
