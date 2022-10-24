@@ -166,6 +166,9 @@ function appendOperator(operator) {
 
     if(display2.textContent === '+' || display2.textContent === '-' || display2.textContent === '÷' || display2.textContent === 'x' || display2.textContent === '^') {
         display2.textContent = '';
+    } else if(display2.textContent === 'NOPE! Can\'t divide by 0' || display2.textContent === 'NaN') {
+        firstNum = 0;
+        display1.textContent += firstNum;
     } else {
         firstNum = Number(display2.textContent);
         display1.textContent += display2.textContent;
@@ -215,6 +218,11 @@ function completeOperation() {
         display1.textContent += display2.textContent + '=';
 
         total = operate(operation, firstNum, secondNum);
+
+        if(typeof total === 'number' && !isNaN(total) && !Number.isInteger(total)) {
+            total = Math.round(total * 100000000) / 100000000;
+        }
+
         display2.textContent = total;
 
         if(display2.textContent.includes('.')) { // Use for backspace button?
@@ -234,7 +242,6 @@ equalsBtn.addEventListener('click', completeOperation);
 
 /* Clear everything when C button is clicked */
 
-//Remember to sort out divide by 0 message
 //Sort out operations with just one number
 
 /* Keyboard functionalities */
