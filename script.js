@@ -280,7 +280,6 @@ clearBtn.addEventListener('click', clearAll);
 /* Keyboard functionalities */
 
 function useKeyAsButton(e) {   
-    console.log(e.key);
     e.preventDefault();
 
     switch(e.key) {
