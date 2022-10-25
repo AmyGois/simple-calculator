@@ -212,7 +212,8 @@ exponentiateBtn.addEventListener('click', () => appendOperator('^'));
 /* F5 - Complete the operation when = button is clicked */
 
 function completeOperation() {
-    if(!display1.textContent.includes('=')) {
+    if(!display1.textContent.includes('=') && display1.textContent !== '') {
+        
         if(display2.textContent === '+' || display2.textContent === '-' || display2.textContent === '÷' || display2.textContent === 'x' || display2.textContent === '^') {
             secondNum = 0;
             display1.textContent += display2.textContent + 0 + '=';
@@ -279,37 +280,72 @@ clearBtn.addEventListener('click', clearAll);
 /* Keyboard functionalities */
 
 function useKeyAsButton(e) {   
+    console.log(e.key);
+    e.preventDefault();
 
-    switch(e.keyCode) {
-        case 48:
+    switch(e.key) {
+        case '0':
             appendNumber(0);
             break;
-        case 49:
+        case '1':
             appendNumber(1);
             break;
-        case 50:
+        case '2':
             appendNumber(2);
             break;
-        case 51:
+        case '3':
             appendNumber(3);
             break;
-        case 52:
+        case '4':
             appendNumber(4);
             break;
-        case 53:
+        case '5':
             appendNumber(5);
             break;
-        case 54:
+        case '6':
             appendNumber(6);
             break;
-        case 55:
+        case '7':
             appendNumber(7);
             break;
-        case 56:
+        case '8':
             appendNumber(8);
             break;
-        case 57:
+        case '9':
             appendNumber(9);
+            break;
+        case '.':
+            appendNumber('.');
+            break;
+        
+        case '+':
+            appendOperator('+');
+            break;
+        case '-':
+            appendOperator('-');
+            break;
+        case '*':
+            appendOperator('x');
+            break;
+        case 'x':
+            appendOperator('x');
+            break;
+        case '/':
+            appendOperator('÷');
+            break;
+        case '÷':
+            appendOperator('÷');
+            break;
+        
+        case '=':
+            completeOperation();
+            break;
+        case 'Enter':
+            completeOperation();
+            break;
+        
+        case 'Backspace':
+            deleteNumber();
             break;
     }
 }
