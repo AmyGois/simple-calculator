@@ -243,10 +243,38 @@ equalsBtn.addEventListener('click', completeOperation);
 
 /* Delete last number or operator  when « button is clicked */
 
+function deleteNumber() {
+    if(display2.textContent === '') {
+        if(display1.textContent !== '' && (display1.textContent.includes('+') || display1.textContent.includes('-') || display1.textContent.includes('x') || display1.textContent.includes('÷') || display1.textContent.includes('^'))) {
+            display2.textContent = display1.textContent.slice(display1.textContent.length -1);
+            display1.textContent = display1.textContent.slice(0, display1.textContent.length - 1);
+        } else {
+            display2.textContent = display1.textContent;
+            display1.textContent = '';
+        }
+        
+    }
+
+    display2.textContent = display2.textContent.slice(0, display2.textContent.length - 1);
+}
+
+backspaceBtn.addEventListener('click', deleteNumber);
+
 
 /* Clear everything when C button is clicked */
 
-//Sort out operations with just one number
+function clearAll() {
+    display1.textContent = '';
+    display2.textContent = '';
+
+    firstNum = 0;
+    secondNum = 0;
+    operation = '';
+    total = '';
+}
+
+clearBtn.addEventListener('click', clearAll);
+
 
 /* Keyboard functionalities */
 
